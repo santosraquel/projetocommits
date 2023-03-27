@@ -44,3 +44,41 @@ const form = document.querySelector("form");
                 dados.appendChild(h1);
             });
         }
+
+        function validateField(){
+           toggleRepositoryError();
+           toggleDateStartError();
+           toggleDateEndError();
+        }
+
+        function toggleRepositoryError(){
+             // obter valor do campo
+             const repositorio = document.getElementById("repositorio").value;
+             // se o campo respositorio for vazio
+             if(!repositorio){
+                // mostra a mensagem
+                document.getElementById('messageRepositoryError').style.display = 'block';
+             }else if(repositorio){
+                document.getElementById('messageRepositoryError').style.display = 'none';
+             }
+        }
+
+        function toggleDateStartError(){
+            const dataInicial = document.getElementById('dataInicial').value;
+
+            if(!dataInicial){
+                document.getElementById('messageDateStartError').style.display = 'block';
+            }else if(dataInicial){
+                document.getElementById('messageDateStartError').style.display = 'none';
+            }
+        }
+
+        function toggleDateEndError(){
+            const dataFinal = document.getElementById('dataFinal').value;
+
+            if(!dataFinal){
+                document.getElementById('messageDateEndError').style.display = 'block';
+            }else if(dataFinal){
+                document.getElementById('messageDateEndError').style.display = 'none';
+            }
+        }

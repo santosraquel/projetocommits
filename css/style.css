@@ -153,4 +153,8 @@ footer {
     font-size: 10pt;
   }
 
-
+.message {
+    color: red;
+    font-size: small;
+    display: none; /* deixar invisivel */
+}

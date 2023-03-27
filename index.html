@@ -15,7 +15,7 @@
         <div id="header">
           <h2 class="logo">
             <i class="fa-solid fa-receipt"></i>
-            Verificação de Commits do Git
+            Verificação de Commits
           </h2>
         </div>
     
@@ -27,16 +27,20 @@
                         <div class="div-input">
                             <div class="input-group">
                                 <label>Repositório</label>
-                                <input type="text" id="repositorio" required/>
+                                <input type="text" id="repositorio" onchange="validateField()"/>
+                                <div id="messageRepositoryError" class="message">Campo obrigatório*</div>
+                                <div class="message">Link inválido*</div>
                             </div>
                             <div class="input-group">
                                 <label>Data Inicial</label>
-                                <input type="date" id="dataInicial" required/>
+                                <input type="date" id="dataInicial" onchange="validateField()"/>
+                                <div id="messageDateStartError" class="message">Campo obrigatório*</div>
                             </div>
                             
                             <div class="input-group">
                                 <label>Data Final</label>
-                                <input type="date" id="dataFinal" required/>
+                                <input type="date" id="dataFinal" onchange="validateField()"/>
+                                <div id="messageDateEndError" class="message">Campo obrigatório*</div>
                             </div>
                         </div>       
             
