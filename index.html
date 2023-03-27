@@ -10,7 +10,54 @@
 </head>
 
 <body>
-    <form>
+    <div id="site">
+
+        <div id="header">
+          <h2 class="logo">
+            <i class="fa-solid fa-receipt"></i>
+            Verificação de Commits do Git
+          </h2>
+        </div>
+    
+        <div id="conteudo">
+            <div class="form-box">
+                <div class="form">
+                    <h2>DADOS</h2>
+                    <form action="#">
+                        <div class="div-input">
+                            <div class="input-group">
+                                <label>Repositório</label>
+                                <input type="text" id="repositorio" required/>
+                            </div>
+                            <div class="input-group">
+                                <label>Data Inicial</label>
+                                <input type="date" id="dataInicial" required/>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>Data Final</label>
+                                <input type="date" id="dataFinal" required/>
+                            </div>
+                        </div>       
+            
+                        <div class="buttonSearch">
+                            <button type="submit" value="Pesquisar">
+                                <i class="fa-solid fa-receipt"></i>
+                                Pesquisar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>     
+            <div id="dados"></div>
+        </div><!-- fechamento da div conteudo -->
+        
+        <footer>
+          <p>Desenvolvido por Raquel Santos</p>
+        </footer>
+        
+        </div>
+    <!-- <form>
         <label>Repositório</label>
         <input type="text" id="repositorio" /><br /><br />
         <label>Data Inicial</label>
@@ -18,8 +65,7 @@
         <label>Data Final</label>
         <input type="date" id="dataFinal" /><br /><br />
         <input type="submit" value="Pesquisar" />
-    </form>
-    <div id="dados"></div>
+    </form> -->
 
 
     <script src="js/script.js"></script>

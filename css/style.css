@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#site{
+    width:100%;
+    height:100vh;
+}
+
+#header{
+    width:100%;
+    height:100px;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(../images/bg8.webp);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.logo {
+    font-size: 25pt;
+    color: white;
+}
+
+h2{
+    text-align: center;
+}
+
+button{
+    border: none;
+    width: 250px;
+    background: rgb(252, 66, 66);
+    padding: 12px 30px;
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s;
+}
+
+button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background: rgb(255, 42, 42);
+}
+
+.buttonSearch{
+    text-align: center;
+}
+
+#conteudo{
+    width:100%;
+    padding: 50px 20px;
+    background: linear-gradient(-45deg, black, gray);
+    position: relative;
+}
+
+.box{
+    display: flex;
+    width: 930px;
+}
+
+/* .form{
+    position: relative;
+} */
+
+.form-box{
+    background-color: white;
+    backdrop-filter: blur(40px);
+    padding: 30px 40px;
+    width: 40%;
+    border-radius: 20px;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.form-box h2{
+    font-size: 30px;
+}
+
+.form-box form {
+    margin: 20px 0;
+}
+
+form .div-input .input-group{
+    margin-bottom: 15px;
+}
+
+form .input-group label{
+    margin-bottom: 5px;
+}
+
+form .input-group input{
+    width: 100%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.32);
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid transparent;
+    padding: 15px;
+    font-size: 15px;
+    box-shadow: 1px 1px 6px gray;
+    transition: all 0.4s ease;
+}
+
+form .input-group input:focus-visible{
+    box-shadow:  1px 1px 6px black;
+}
+
+
+@media (max-width: 930px) {
+    .img-box{
+        display: none;
+    }
+
+    .box{
+        width: 700px;
+    }
+
+    .form-box{
+        width: 100%;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width:500px) {
+    .w50{
+        width: 100%;
+        padding: 0;
+    }
+}
+
+
+#btn{
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color:white;
+    font-size: 10pt;
+  }
+
+
