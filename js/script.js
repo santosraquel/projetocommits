@@ -59,6 +59,7 @@ const form = document.querySelector("form");
                 // mostra a mensagem
                 document.getElementById('messageRepositoryError').style.display = 'block';
              }else if(repositorio){
+                // esconde a mensagem
                 document.getElementById('messageRepositoryError').style.display = 'none';
              }
         }

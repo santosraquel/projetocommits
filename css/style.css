@@ -37,7 +37,7 @@ h2{
 button{
     border: none;
     width: 250px;
-    background: rgb(252, 66, 66);
+    background: #fc4242;
     padding: 12px 30px;
     color: white;
     border-radius: 30px;
@@ -157,4 +157,28 @@ footer {
     color: red;
     font-size: small;
     display: none; /* deixar invisivel */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-color: black;
+    background-color: white;
+    margin-top: 50px;
+}
+
+th {
+    height: 50px;
+}
+
+td {
+    text-align: center;
+}
+
+th, td {
+    padding: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #fc4242;
 }
