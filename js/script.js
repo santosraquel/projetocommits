@@ -4,13 +4,18 @@ const form = document.querySelector("form");
             const repositorio = document.querySelector("#repositorio").value;
             const dataInicial = document.querySelector("#dataInicial").value;
             const dataFinal = document.querySelector("#dataFinal").value;
+            const usuario = obterNomeUsuario(repositorio);
+            const nomeRepositorio = obterNomeRepositorio(repositorio);
+            console.log(usuario);
+            console.log(nomeRepositorio);
 
-            buscarCommits(repositorio, dataInicial, dataFinal);
-            calcularQuantidadeDias(dataInicial, dataFinal);
+            buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal);
+            // calcularQuantidadeDias(dataInicial, dataFinal);
+            
         });
 
-        function buscarCommits(repositorio, dataInicial, dataFinal) {
-            const url = `https://api.github.com/repos/${repositorio}/commits?since=${dataInicial}&until=${dataFinal}`;
+        function buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal) {
+            const url = `https://api.github.com/repos/${usuario}/${nomeRepositorio}/commits?since=${dataInicial}&until=${dataFinal}`;
             fetch(url).
                 then(response => response.json()).
                 then(commits => {
@@ -50,11 +55,34 @@ const form = document.querySelector("form");
             });
         }
 
+        function obterNomeUsuario(repositorio){
+            let url = repositorio.split('/'); //  ['https:', '', 'github.com', 'frankwco', 'loja']
+            let usuario = url[3];
+            return usuario;
+        }
+
+        function obterNomeRepositorio(repositorio){
+            let url = repositorio.split('/'); //  ['https:', '', 'github.com', 'frankwco', 'loja']
+            let nomeRepositorio = url[4];
+            // console.log(nomeRepositorio);
+            return nomeRepositorio;
+        }
+
+
         function calcularQuantidadeDias(dataInicial, dataFinal){
             const subtracaoDatas   = new Date(dataFinal) - new Date(dataInicial)
             const quantidadeDias = subtracaoDatas / (1000 * 60 * 60 * 24);
             console.log(quantidadeDias) 
             return quantidadeDias;
+        }
+
+
+        function quantidadeEstrelas(repositorio){
+            // https://api.github.com/repos/santosraquel/atividadeRecibo/stargazers
+        }
+
+        function quantidadeForks(){
+            // https://api.github.com/repos/OWNER/REPO/forks
         }
 
         function listaTabela(){
