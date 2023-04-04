@@ -1,16 +1,15 @@
 const form = document.querySelector("form");
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            const repositorio = document.querySelector("#repositorio").value;
+            const campoRepositorio = document.querySelector("#repositorio").value;
             const dataInicial = document.querySelector("#dataInicial").value;
             const dataFinal = document.querySelector("#dataFinal").value;
-            const usuario = obterNomeUsuario(repositorio);
-            const nomeRepositorio = obterNomeRepositorio(repositorio);
+            const usuario = obterNomeUsuario(campoRepositorio);
+            const nomeRepositorio = obterNomeRepositorio(campoRepositorio);
             console.log(usuario);
             console.log(nomeRepositorio);
 
             buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal);
-            // calcularQuantidadeDias(dataInicial, dataFinal);
             
         });
 
@@ -55,16 +54,15 @@ const form = document.querySelector("form");
             });
         }
 
-        function obterNomeUsuario(repositorio){
-            let url = repositorio.split('/'); //  ['https:', '', 'github.com', 'frankwco', 'loja']
+        function obterNomeUsuario(campoRepositorio){
+            let url = campoRepositorio.split('/'); //  ['https:', '', 'github.com', 'frankwco', 'loja']
             let usuario = url[3];
             return usuario;
         }
 
-        function obterNomeRepositorio(repositorio){
-            let url = repositorio.split('/'); //  ['https:', '', 'github.com', 'frankwco', 'loja']
+        function obterNomeRepositorio(campoRepositorio){
+            let url = campoRepositorio.split('/'); //  ['https:', '', 'github.com', 'frankwco', 'loja']
             let nomeRepositorio = url[4];
-            // console.log(nomeRepositorio);
             return nomeRepositorio;
         }
 
@@ -77,7 +75,7 @@ const form = document.querySelector("form");
         }
 
 
-        function quantidadeEstrelas(repositorio){
+        function quantidadeEstrelas(campoRepositorio){
             // https://api.github.com/repos/santosraquel/atividadeRecibo/stargazers
         }
 
@@ -98,12 +96,12 @@ const form = document.querySelector("form");
 
         function toggleRepositoryError(){
              // obter valor do campo
-             const repositorio = document.getElementById("repositorio").value;
+             const campoRepositorio = document.getElementById("repositorio").value;
              // se o campo respositorio for vazio
-             if(!repositorio){
+             if(!campoRepositorio){
                 // mostra a mensagem
                 document.getElementById('messageRepositoryError').style.display = 'block';
-             }else if(repositorio){
+             }else if(campoRepositorio){
                 // esconde a mensagem
                 document.getElementById('messageRepositoryError').style.display = 'none';
              }
