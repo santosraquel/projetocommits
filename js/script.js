@@ -77,7 +77,7 @@ const form = document.querySelector("form");
 
 
         function quantidadeEstrelas(usuario, nomeRepositorio){
-            // https://api.github.com/repos/santosraquel/atividadeRecibo/stargazers
+            // https://api.github.com/repos/OWNER/REPO/stargazers
             const url = `https://api.github.com/repos/${usuario}/${nomeRepositorio}/stargazers`;
             fetch(url).
                 then(response => response.json()).

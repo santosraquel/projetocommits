@@ -1,0 +1,28 @@
+CONTROLE DA atividade
+
+- Estilizar a página e deixá-la responsiva: Verificar botão e listaTabela
+
+- Apresente os dados em uma tabela: FALTA FAZER
+
+- Formatar a data na tabela: FALTA FAZER
+
+- quantidade de dias com commits, considerando o periodo indicado: FALTA FAZER (OBS: FAZER FILTRO POR COMMITS)
+
+- Mostrar as mensagens dos commits: MAIS OU MENOS, TEM QUE CONSERTAR
+
+- Habilitar o GitHub Pages e enviar o link na tarefa do moodle: FALTA FAZER
+
+- Permitir que o campo do repositório aceite o link completo(https://github.com/frankwco/loja)
+e faça a devida quebra para identificar o autor e o nome do repositório: CONCLUIDO
+
+- Mostrar a quantidade de dias disponível para a realização da atividade (dividir uma data pela outra): CONCLUIDO
+
+- Validar campo vazio (repositório, data inicial e data final): CONCLUIDO
+
+- Mostrar a quantidade de estrelas: CONCLUIDO
+
+- Mostrar a quantidade de forks: CONCLUIDO
+
+
+
+
