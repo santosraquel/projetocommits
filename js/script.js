@@ -11,6 +11,7 @@ const form = document.querySelector("form");
 
             buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal);
             quantidadeEstrelas(usuario, nomeRepositorio);
+            quantidadeForks(usuario, nomeRepositorio);
         });
 
         function buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal) {
@@ -89,13 +90,27 @@ const form = document.querySelector("form");
         }
 
         function contarEstrelas(starts){
-            let quantidade = starts.length;
-            return quantidade;
+            let quantidadeStarts = starts.length;
+            return quantidadeStarts;
         }
 
-        function quantidadeForks(){
+        function quantidadeForks(usuario, nomeRepositorio){
             // https://api.github.com/repos/OWNER/REPO/forks
+            const url = `https://api.github.com/repos/${usuario}/${nomeRepositorio}/forks`;
+            fetch(url).
+                then(response => response.json()).
+                then(forks => {
+                    contarForks(forks);
+                    console.log("qtde forks: ", contarForks(forks)); 
+                }).catch(error=>{
+                    console.log(error);
+                });
         }
+        
+        function contarForks(forks) { 
+            let quantidadeForks = forks.length;
+            return quantidadeForks;
+         }
 
         function listaTabela(){
             let tbody = document.getElementById("tbody");
