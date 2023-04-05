@@ -10,7 +10,7 @@ const form = document.querySelector("form");
             console.log(nomeRepositorio);
 
             buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal);
-            
+            quantidadeEstrelas(usuario, nomeRepositorio);
         });
 
         function buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal) {
@@ -75,8 +75,22 @@ const form = document.querySelector("form");
         }
 
 
-        function quantidadeEstrelas(campoRepositorio){
+        function quantidadeEstrelas(usuario, nomeRepositorio){
             // https://api.github.com/repos/santosraquel/atividadeRecibo/stargazers
+            const url = `https://api.github.com/repos/${usuario}/${nomeRepositorio}/stargazers`;
+            fetch(url).
+                then(response => response.json()).
+                then(starts => {
+                    contarEstrelas(starts);
+                    console.log("qtde estrelas: ", contarEstrelas(starts)); 
+                }).catch(error=>{
+                    console.log(error);
+                });
+        }
+
+        function contarEstrelas(starts){
+            let quantidade = starts.length;
+            return quantidade;
         }
 
         function quantidadeForks(){
