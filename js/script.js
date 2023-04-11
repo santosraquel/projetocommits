@@ -6,12 +6,10 @@ const form = document.querySelector("form");
             const dataFinal = document.querySelector("#dataFinal").value;
             const usuario = obterNomeUsuario(campoRepositorio);
             const nomeRepositorio = obterNomeRepositorio(campoRepositorio);
-            console.log(usuario);
-            console.log(nomeRepositorio);
 
             buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal);
-            quantidadeEstrelas(usuario, nomeRepositorio);
-            quantidadeForks(usuario, nomeRepositorio);
+            // quantidadeEstrelas(usuario, nomeRepositorio);
+            // quantidadeForks(usuario, nomeRepositorio);
         });
 
         function buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal) {
@@ -19,7 +17,6 @@ const form = document.querySelector("form");
             fetch(url).
                 then(response => response.json()).
                 then(commits => {
-                    console.log(commits); 
                     contarCommits(commits);
                 }).catch(error=>{
                     console.log(error);
@@ -28,31 +25,37 @@ const form = document.querySelector("form");
 
         function contarCommits(commits) {
             const commitsPorDia = {};
-            console.log("commitsPorDia: ", commitsPorDia)
             commits.forEach(element => {
                 const dataCommit = element.commit.author.date.substr(0, 10);
-                let mensagemCommit = element.commit.message + dataCommit;
-                console.log(mensagemCommit)
                 if (commitsPorDia[dataCommit]) {
                     commitsPorDia[dataCommit].quantidade++;
                 } else {
-                    commitsPorDia[dataCommit] = { quantidade: 1, data: dataCommit, mensagem: mensagemCommit };
+                    commitsPorDia[dataCommit] = { quantidade: 1, data: dataCommit };
                 }
             });
             const commitsPorDiaArray = Object.keys(commitsPorDia).map(dataCommit => {
-                return { data: dataCommit, quantidade: commitsPorDia[dataCommit].quantidade, mensagem: mensagemCommit }; // retorna um objeto com todas as informações
+                return { data: dataCommit, quantidade: commitsPorDia[dataCommit].quantidade };
             });
-            console.log("commitsPorDiaArray: ", commitsPorDiaArray)
             mostrarTela(commitsPorDiaArray);
         }
 
+        
         function mostrarTela(commits) {
+            console.log("COMMITS: ", commits)
+            const qtd = qtdDiasComCommits(commits);
+            console.log("qtd dias: ", qtd)
             const dados = document.querySelector("#dados");
-            commits.forEach(element => {
-                const h1 = document.createElement("h1");
-                h1.innerHTML = element.data + " - " + element.quantidade + " - " + element.mensagem;
-                dados.appendChild(h1);
-            });
+            // commits.forEach(element => {
+                //     const h1 = document.createElement("h1");
+                //     h1.innerHTML = element.data + " - " + element.quantidade;
+                //     dados.appendChild(h1);
+                // });
+            }
+            
+        function qtdDiasComCommits(commits){
+            console.log("commits: ", commits)
+            const qtd =  commits.length;
+            return qtd;
         }
 
         function obterNomeUsuario(campoRepositorio){
@@ -74,7 +77,6 @@ const form = document.querySelector("form");
             console.log(quantidadeDias) 
             return quantidadeDias;
         }
-
 
         function quantidadeEstrelas(usuario, nomeRepositorio){
             // https://api.github.com/repos/OWNER/REPO/stargazers
@@ -111,11 +113,6 @@ const form = document.querySelector("form");
             let quantidadeForks = forks.length;
             return quantidadeForks;
          }
-
-        function listaTabela(){
-            let tbody = document.getElementById("tbody");
-            let tr = tbody.insertRow();
-        }
 
         function validateField(){
            toggleRepositoryError();

@@ -6,7 +6,7 @@ CONTROLE DA atividade
 
 - Formatar a data na tabela: FALTA FAZER
 
-- quantidade de dias com commits, considerando o periodo indicado: FALTA FAZER (OBS: FAZER FILTRO POR COMMITS)
+- Mostrar quantidade de dias com commits, considerando o periodo indicado: FALTA FAZER (OBS: FAZER FILTRO POR COMMITS)
 
 - Mostrar as mensagens dos commits: MAIS OU MENOS, TEM QUE CONSERTAR
 
