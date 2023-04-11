@@ -17,43 +17,60 @@ const form = document.querySelector("form");
             fetch(url).
                 then(response => response.json()).
                 then(commits => {
-                    contarCommits(commits);
+                    contarCommits(commits, dataInicial, dataFinal);
                 }).catch(error=>{
                     console.log(error);
                 });
         }
 
-        function contarCommits(commits) {
+        function contarCommits(commits, dataInicial, dataFinal) {
+            console.log("COMMITS1: ", commits)
             const commitsPorDia = {};
             commits.forEach(element => {
                 const dataCommit = element.commit.author.date.substr(0, 10);
+                const mensagem = element.commit.message + ' - ' + dataCommit;
+                console.log(mensagem);
                 if (commitsPorDia[dataCommit]) {
                     commitsPorDia[dataCommit].quantidade++;
                 } else {
-                    commitsPorDia[dataCommit] = { quantidade: 1, data: dataCommit };
+                    commitsPorDia[dataCommit] = { quantidade: 1, data: dataCommit, mensagem: mensagem };
                 }
             });
             const commitsPorDiaArray = Object.keys(commitsPorDia).map(dataCommit => {
-                return { data: dataCommit, quantidade: commitsPorDia[dataCommit].quantidade };
+                return { data: dataCommit, quantidade: commitsPorDia[dataCommit].quantidade, mensagem: commitsPorDia[dataCommit].mensagem };
             });
-            mostrarTela(commitsPorDiaArray);
+            mostrarTela(commitsPorDiaArray, dataInicial, dataFinal);
         }
-
         
-        function mostrarTela(commits) {
-            console.log("COMMITS: ", commits)
-            const qtd = qtdDiasComCommits(commits);
-            console.log("qtd dias: ", qtd)
+        function mostrarTela(commits, dataInicial, dataFinal) {
+            console.log("COMMITS2: ", commits)
+            const dataCommits = [];
+            const mensagens = [];
+            const qtdCommits = [];
+            let totalDias = calcularQuantidadeDias(dataInicial, dataFinal);
+            const qtdDiasCommits = qtdDiasComCommits(commits);
+
+            // console.log("total dias: ", totalDias)
+
+            for(let i = 0; i < commits.length; i++){
+                dataCommits.push(commits[i].data);
+            }
+            // console.log("dataCommits: ", dataCommits)
+
+            for(let i = 0; i < commits.length; i++){
+                mensagens.push(commits[i].mensagem);
+            }
+            console.log("mensagens: ", mensagens)
+
             const dados = document.querySelector("#dados");
             // commits.forEach(element => {
-                //     const h1 = document.createElement("h1");
-                //     h1.innerHTML = element.data + " - " + element.quantidade;
-                //     dados.appendChild(h1);
-                // });
+            //         const h1 = document.createElement("h1");
+            //         h1.innerHTML = element.data + " - " + element.quantidade, " - " + element.mensagem;
+            //         dados.appendChild(h1);
+            //     });
             }
             
         function qtdDiasComCommits(commits){
-            console.log("commits: ", commits)
             const qtd =  commits.length;
             return qtd;
         }
@@ -73,8 +90,7 @@ const form = document.querySelector("form");
 
         function calcularQuantidadeDias(dataInicial, dataFinal){
             const subtracaoDatas   = new Date(dataFinal) - new Date(dataInicial)
-            const quantidadeDias = subtracaoDatas / (1000 * 60 * 60 * 24);
-            console.log(quantidadeDias) 
+            const quantidadeDias = subtracaoDatas / (1000 * 60 * 60 * 24); 
             return quantidadeDias;
         }
 
