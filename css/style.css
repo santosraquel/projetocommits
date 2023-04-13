@@ -160,25 +160,28 @@ footer {
 }
 
 table {
+    text-align: center;
     border-collapse: collapse;
     width: 100%;
-    border-color: black;
-    background-color: white;
+    /* border-color: black;*/
+    background-color: white; 
     margin-top: 50px;
 }
 
 th {
     height: 50px;
+    background-color: rgb(255, 42, 42);
+    color: white;
+    padding: 20px;
+    border: 1px gray solid;
 }
 
 td {
-    text-align: center;
-}
-
-th, td {
     padding: 15px;
+    border: 1px gray solid;
 }
 
-tr:nth-child(even) {
+
+/* tr:nth-child(even) {
     background-color: #fc4242;
-}
+} */

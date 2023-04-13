@@ -28,7 +28,7 @@ const form = document.querySelector("form");
             const commitsPorDia = {};
             commits.forEach(element => {
                 const dataCommit = element.commit.author.date.substr(0, 10);
-                const mensagem = element.commit.message + ' - ' + dataCommit;
+                const mensagem = element.commit.message;
                 console.log(mensagem);
                 if (commitsPorDia[dataCommit]) {
                     commitsPorDia[dataCommit].quantidade++;
@@ -67,12 +67,16 @@ const form = document.querySelector("form");
             // console.log("mensagens: ", mensagens);
             // console.log("quantidade commits: ", qtdCommits);
             const dados = document.querySelector("#dados");
-            // commits.forEach(element => {
-            //         const h1 = document.createElement("h1");
-            //         h1.innerHTML = element.data + " - " + element.quantidade, " - " + element.mensagem;
-            //         dados.appendChild(h1);
-            //     });
-            }
+            var table = '<table><thead><tr><th>Data Commit</th><th>Mensagem</th><th>Quantidade de Commits</th><th>Total de Dias</th><th>Quantidade de Dias c/ Commits</th><th>Quantidade de estrelas</th><th>Quantidade de forks</th></tr></thead><tbody>';
+            
+                for(let indice = 0; indice < dataCommits.length; indice++){
+                    table += '<tr><td>'+ dataCommits[indice] +'</td><td>'+ mensagens[indice] +'</td><td>'+ qtdCommits[indice] +'</td><td>'+ totalDias +'</td><td>'+ qtdDiasCommits +'</td><td>'+ starts +'</td><td>'+ forks +'</td></tr>'
+                }
+
+            table += '</tbody></table>';
+           
+            dados.innerHTML = table;
+        }
             
         function qtdDiasComCommits(commits){
             const qtd =  commits.length;
