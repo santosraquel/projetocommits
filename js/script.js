@@ -24,12 +24,10 @@ const form = document.querySelector("form");
         }
 
         function contarCommits(commits, dataInicial, dataFinal, usuario, nomeRepositorio) {
-            console.log("COMMITS1: ", commits)
             const commitsPorDia = {};
             commits.forEach(element => {
                 const dataCommit = element.commit.author.date.substr(0, 10);
                 const mensagem = element.commit.message;
-                console.log(mensagem);
                 if (commitsPorDia[dataCommit]) {
                     commitsPorDia[dataCommit].quantidade++;
                 } else {
@@ -43,9 +41,6 @@ const form = document.querySelector("form");
         }
         
         function mostrarTela(commits, dataInicial, dataFinal, usuario, nomeRepositorio) {
-            console.log("COMMITS2: ", commits)
-            console.log(usuario)
-            console.log(nomeRepositorio)
             const dataCommits = [];
             const mensagens = [];
             const qtdCommits = [];
@@ -55,17 +50,13 @@ const form = document.querySelector("form");
             const forks = quantidadeForks(usuario, nomeRepositorio);
             console.log("estrelas: ", starts);
             console.log("forks: ", forks);
-
-
+            
             for(let i = 0; i < commits.length; i++){
-                dataCommits.push(commits[i].data);
+                dataCommits.push(toDate(commits[i].data));
                 mensagens.push(commits[i].mensagem);
                 qtdCommits.push(commits[i].quantidade);
-            }
-            // console.log("total dias: ", totalDias)
-            // console.log("dataCommits: ", dataCommits);
-            // console.log("mensagens: ", mensagens);
-            // console.log("quantidade commits: ", qtdCommits);
+            } 
+
             const dados = document.querySelector("#dados");
             var table = '<table><thead><tr><th>Data Commit</th><th>Mensagem</th><th>Quantidade de Commits</th><th>Total de Dias</th><th>Quantidade de Dias c/ Commits</th><th>Quantidade de estrelas</th><th>Quantidade de forks</th></tr></thead><tbody>';
             
@@ -77,6 +68,20 @@ const form = document.querySelector("form");
            
             dados.innerHTML = table;
         }
+
+        function toDate(dataTexto) {
+            let partes = dataTexto.split('-');
+            const novaData =  new Date(partes[0], partes[1]-1, partes[2]);
+            const data = toString(novaData);
+            return data;
+          }
+
+        function toString(date) {
+            const dataFormatada = ('0' + date.getDate()).slice(-2) + '/' +
+                    ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+                    date.getFullYear();
+            return dataFormatada;
+          }
             
         function qtdDiasComCommits(commits){
             const qtd =  commits.length;
