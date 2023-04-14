@@ -8,8 +8,6 @@ const form = document.querySelector("form");
             const nomeRepositorio = obterNomeRepositorio(campoRepositorio);
 
             buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal);
-            // quantidadeEstrelas(usuario, nomeRepositorio);
-            // quantidadeForks(usuario, nomeRepositorio);
         });
 
         function buscarCommits(usuario, nomeRepositorio, dataInicial, dataFinal) {
@@ -58,7 +56,7 @@ const form = document.querySelector("form");
             } 
 
             const dados = document.querySelector("#dados");
-            var table = '<table><thead><tr><th>Data Commit</th><th>Mensagem</th><th>Quantidade de Commits</th><th>Total de Dias</th><th>Quantidade de Dias c/ Commits</th><th>Quantidade de estrelas</th><th>Quantidade de forks</th></tr></thead><tbody>';
+            var table = '<table><thead><tr><th>Data Commit</th><th>Mensagem</th><th>Quantidade de Commits</th><th>Total de Dias</th><th>Quantidade de Dias c/ Commits</th><th>Quantidade de Estrelas</th><th>Quantidade de Forks</th></tr></thead><tbody>';
             
                 for(let indice = 0; indice < dataCommits.length; indice++){
                     table += '<tr><td>'+ dataCommits[indice] +'</td><td>'+ mensagens[indice] +'</td><td>'+ qtdCommits[indice] +'</td><td>'+ totalDias +'</td><td>'+ qtdDiasCommits +'</td><td>'+ starts +'</td><td>'+ forks +'</td></tr>'
@@ -81,7 +79,7 @@ const form = document.querySelector("form");
                     ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
                     date.getFullYear();
             return dataFormatada;
-          }
+        }
             
         function qtdDiasComCommits(commits){
             const qtd =  commits.length;
@@ -99,7 +97,6 @@ const form = document.querySelector("form");
             let nomeRepositorio = url[4];
             return nomeRepositorio;
         }
-
 
         function calcularQuantidadeDias(dataInicial, dataFinal){
             const subtracaoDatas   = new Date(dataFinal) - new Date(dataInicial)
